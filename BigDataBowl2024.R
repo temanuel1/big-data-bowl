@@ -37,3 +37,5 @@ clean_tackles_pbp_1 <- subset(tackles_pbp_1, select = -c(yardlineNumber, foulNam
 rm(tracking_week_1, week_1_tackles)
 
 #can repeat this process for every week to make a clean version of it for every week
+
+# this is the code for the table branch
