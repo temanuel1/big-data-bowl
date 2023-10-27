@@ -36,6 +36,46 @@ clean_tackles_pbp_1 <- subset(tackles_pbp_1, select = -c(yardlineNumber, foulNam
 #remove some now unneeded tables to clean up global environment
 rm(tracking_week_1, week_1_tackles)
 
-#can repeat this process for every week to make a clean version of it for every week
+#can repeat this process for every week to make a clean version of it for every week (doing so below)
+week_2_tackles <- tracking_week_2 %>% filter(event == 'tackle')
+tackles_pbp_2 <- merge(week_2_tackles, plays, by=c('playId', 'gameId'))
+clean_tackles_pbp_2 <- subset(tackles_pbp_2, select = -c(yardlineNumber, foulName1, foulName2, foulNFLId1, foulNFLId2, jerseyNumber))
+rm(tracking_week_2, week_2_tackles)
 
-# this is the code for the table branch
+week_3_tackles <- tracking_week_3 %>% filter(event == 'tackle')
+tackles_pbp_3 <- merge(week_3_tackles, plays, by=c('playId', 'gameId'))
+clean_tackles_pbp_3 <- subset(tackles_pbp_3, select = -c(yardlineNumber, foulName1, foulName2, foulNFLId1, foulNFLId2, jerseyNumber))
+rm(tracking_week_3, week_3_tackles)
+
+week_4_tackles <- tracking_week_4 %>% filter(event == 'tackle')
+tackles_pbp_4 <- merge(week_4_tackles, plays, by=c('playId', 'gameId'))
+clean_tackles_pbp_4 <- subset(tackles_pbp_4, select = -c(yardlineNumber, foulName1, foulName2, foulNFLId1, foulNFLId2, jerseyNumber))
+rm(tracking_week_4, week_4_tackles)
+
+week_5_tackles <- tracking_week_5 %>% filter(event == 'tackle')
+tackles_pbp_5 <- merge(week_5_tackles, plays, by=c('playId', 'gameId'))
+clean_tackles_pbp_5 <- subset(tackles_pbp_5, select = -c(yardlineNumber, foulName1, foulName2, foulNFLId1, foulNFLId2, jerseyNumber))
+rm(tracking_week_5, week_5_tackles)
+
+week_6_tackles <- tracking_week_6 %>% filter(event == 'tackle')
+tackles_pbp_6 <- merge(week_6_tackles, plays, by=c('playId', 'gameId'))
+clean_tackles_pbp_6 <- subset(tackles_pbp_6, select = -c(yardlineNumber, foulName1, foulName2, foulNFLId1, foulNFLId2, jerseyNumber))
+rm(tracking_week_6, week_6_tackles)
+
+week_7_tackles <- tracking_week_7 %>% filter(event == 'tackle')
+tackles_pbp_7 <- merge(week_7_tackles, plays, by=c('playId', 'gameId'))
+clean_tackles_pbp_7 <- subset(tackles_pbp_7, select = -c(yardlineNumber, foulName1, foulName2, foulNFLId1, foulNFLId2, jerseyNumber))
+rm(tracking_week_7, week_7_tackles)
+
+week_8_tackles <- tracking_week_8 %>% filter(event == 'tackle')
+tackles_pbp_8 <- merge(week_8_tackles, plays, by=c('playId', 'gameId'))
+clean_tackles_pbp_8 <- subset(tackles_pbp_8, select = -c(yardlineNumber, foulName1, foulName2, foulNFLId1, foulNFLId2, jerseyNumber))
+rm(tracking_week_8, week_8_tackles)
+
+week_9_tackles <- tracking_week_9 %>% filter(event == 'tackle')
+tackles_pbp_9 <- merge(week_9_tackles, plays, by=c('playId', 'gameId'))
+clean_tackles_pbp_9 <- subset(tackles_pbp_9, select = -c(yardlineNumber, foulName1, foulName2, foulNFLId1, foulNFLId2, jerseyNumber))
+rm(tracking_week_9, week_9_tackles)
+#just did the copy and pasting plus adjusting so its done, idk if its totally necessary
+
+#code for table branch
