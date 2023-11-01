@@ -86,8 +86,13 @@ rm(clean_tackles_pbp_9,clean_tackles_pbp_8,clean_tackles_pbp_7,clean_tackles_pbp
 
 clean_tackles_all <- merge(all_weeks, tackles, by=c('playId', 'gameId','nflId'),all=TRUE)
 clean_tackles_all <- subset(clean_tackles_all, select = -c(forcedFumble,pff_missedTackle,event,frameId,playDirection,yardlineSide,absoluteYardlineNumber,offenseFormation))
+clean_tackles_all <- subset(clean_tackles_all, select = -c(preSnapHomeTeamWinProbability,preSnapVisitorTeamWinProbability,homeTeamWinProbabilityAdded,visitorTeamWinProbilityAdded,defendersInTheBox, passLength, prePenaltyPlayResult, penaltyYards, preSnapHomeScore, preSnapVisitorScore))
+clean_tackles_all <- subset(clean_tackles_all, select = -c(playDescription))
 rm(all_weeks)
 
 #next step is a function that finds who the next tackler would be
-
-
+#drop all plays nullified
+#drop last 2 minutes of each half
+#drop any sack
+pen <- clean_tackles_all%>%filter(playNullifiedByPenalty=='Y')
+help('filter')
