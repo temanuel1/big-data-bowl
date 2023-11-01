@@ -79,13 +79,15 @@ rm(tracking_week_9, week_9_tackles, tackles_pbp_9)
 #just did the copy and pasting plus adjusting so its done, idk if its totally necessary
 
 #making one large DF
-rbind(clean_tackles_pbp_9,clean_tackles_pbp_8,clean_tackles_pbp_7,clean_tackles_pbp_6,clean_tackles_pbp_5,clean_tackles_pbp_4,clean_tackles_pbp_3,clean_tackles_pbp_2,clean_tackles_pbp_1)
+all_weeks <- rbind(clean_tackles_pbp_9,clean_tackles_pbp_8,clean_tackles_pbp_7,clean_tackles_pbp_6,clean_tackles_pbp_5,clean_tackles_pbp_4,clean_tackles_pbp_3,clean_tackles_pbp_2,clean_tackles_pbp_1)
+rm(clean_tackles_pbp_9,clean_tackles_pbp_8,clean_tackles_pbp_7,clean_tackles_pbp_6,clean_tackles_pbp_5,clean_tackles_pbp_4,clean_tackles_pbp_3,clean_tackles_pbp_2,clean_tackles_pbp_1)
 
-#code to create 
-ptack <- merge(players, tackles, by=c('nflId'))
-ptack<- subset(ptack, select= -c(forcedFumble,pff_missedTackle))
+#code to create a clean df with all instance of a tackle with tackler and ballcarrier
 
+clean_tackles_all <- merge(all_weeks, tackles, by=c('playId', 'gameId','nflId'),all=TRUE)
+clean_tackles_all <- subset(clean_tackles_all, select = -c(forcedFumble,pff_missedTackle,event,frameId,playDirection,yardlineSide,absoluteYardlineNumber,offenseFormation))
+rm(all_weeks)
 
-
+#next step is a function that finds who the next tackler would be
 
 
