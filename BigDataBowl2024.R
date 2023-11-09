@@ -1,6 +1,8 @@
 install.packages("nflverse")
 library(nflverse)
 library(tidyverse)
+library(stringr)
+library(dplyr)
 #This first section of code will be to explore the data, just to get some ideas of what to do
 #make sure your directory call is right
 games <- read.csv('NFL/games.csv')
@@ -94,5 +96,12 @@ rm(all_weeks)
 #drop all plays nullified
 #drop last 2 minutes of each half
 #drop any sack
-pen <- clean_tackles_all%>%filter(playNullifiedByPenalty=='Y')
-help('filter')
+clean_tackles_all <- clean_tackles_all%>%filter(playNullifiedByPenalty!='Y')
+clean_tackles_all <- clean_tackles_all%>%filter(passResult!='S')
+clean_tackles_all <- subset(clean_tackles_all, select = -c(playNullifiedByPenalty,passResult, passProbability))
+
+
+clean_tackles_new <- clean_tackles_all %>%
+  filter(((as.numeric(str_sub(gameClock, 1, 1)) >= 2)&(quarter==2))|(((as.numeric(str_sub(gameClock, 1, 1)))&(quarter=4))))
+
+help(str_sub)
