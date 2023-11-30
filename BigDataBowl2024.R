@@ -99,13 +99,14 @@ rm(all_weeks)
 #drop any sack
 clean_tackles_all <- clean_tackles_all%>%filter(playNullifiedByPenalty!='Y')
 clean_tackles_all <- clean_tackles_all%>%filter(passResult!='S')
-clean_tackles_all <- subset(clean_tackles_all, select = -c(playNullifiedByPenalty,passResult, passProbability))
+clean_tackles_all_t <- subset(clean_tackles_all, select = -c(playNullifiedByPenalty,passResult, passProbability))
 
 
-clean_tackles_all <- clean_tackles_all %>%
-  filter(((as.numeric(str_sub(gameClock, 1, 1)) >= 2)&(quarter==2))|(((as.numeric(str_sub(gameClock, 1, 1)))&(quarter=4))))
+#clean_tackles_all <- clean_tackles_all %>%
+  #filter(((as.numeric(str_sub(gameClock, 1, 1)) >= 2)&(quarter==2))|(((as.numeric(str_sub(gameClock, 1, 1)))&(quarter=4))))
 
 library(data.table)
 
-fwrite(clean_tackles_all,'C:\\Users\\brady\\OneDrive\\Documents\\R-Baseball-Stuff\\NFL\\clean_tackles.csv')
+fwrite(clean_tackles_all_t,'C:\\Users\\brady\\OneDrive\\Documents\\R-Baseball-Stuff\\NFL\\clean_tackles_final.csv')
+
 
